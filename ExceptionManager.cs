@@ -24,7 +24,10 @@ namespace ExceptionHandler
             // 1b- usando Exception class che fa parte del System library e diamo il nome "ex"
             catch (Exception ex)
             {
+                // message ci da l'errore
                 Console.WriteLine(ex.Message);
+                // stacktrace ci dimostra dove si trova l'errore nel nostro codice
+                Console.WriteLine(ex.StackTrace);
             }
             //2b- finally sempre viene eseguito e fa parte di try e catch e qui se condizione output combacia allora ci da un error massage(che abbiamo scritto in program) e boolean ritorna true altrimenti boolean rimane falso
             finally
