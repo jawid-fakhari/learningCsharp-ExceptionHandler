@@ -1,25 +1,28 @@
 ﻿using ExceptionHandler;
 
-///////// Lezione
+/////// Lezione
 
-//Console.WriteLine("Please insert an index: ");
-//int index = Int32.Parse(Console.ReadLine());
+Console.WriteLine("Handle the exception of indexes of this array { 1, 8, 12, 5 }: ");
 
-//int result = ExceptionManager.GetNumber(index);
+Console.WriteLine("Please insert an index: ");
+int index = Int32.Parse(Console.ReadLine());
 
-//if (ExceptionManager.WrongAnswer)
-//{
-//    Console.WriteLine("The index was wrong");
-//}
-//else
-//{
-//    Console.WriteLine($"The number is: {result}");
-//}
+int result = ExceptionManager.GetNumber(index);
 
-//Console.WriteLine("please prss a key to exit");
-//Console.ReadLine();
+if (ExceptionManager.WrongAnswer)
+{
+    Console.WriteLine("The index was wrong");
+}
+else
+{
+    Console.WriteLine($"The number is: {result}");
+}
 
+
+///////////////
 //1.Write a C# program that prompts the user to input two numbers and divides them. Handle an exception when the user enters non-numeric values.
+
+Console.WriteLine("Exercise 1) Write a C# program that prompts the user to input two numbers and divides them. Handle an exception when the user enters non-numeric values.: ");
 Esercizio1 esercizio1 = new Esercizio1();
 
 
@@ -50,4 +53,42 @@ catch (Exception ex)
 {
     Console.WriteLine("An error occurred: " + ex.Message);
 }
+/////////////////
+//2.Write a C# program to implement a method that takes an integer as input and throws an exception
+//if the number is negative. Handle the exception in the calling code.
 
+
+Console.WriteLine("Exercise 2) Write a C# program to implement a method that takes an integer as input and " +
+    "throws an exception if the number is negative. Handle the exception in the calling code.: ");
+
+
+try
+{
+    Console.WriteLine("Write a number: ");
+    int number2 = Int32.Parse(Console.ReadLine());
+
+    ControlPositiveNumber(number2);
+
+    Console.WriteLine("Valid input: " + number2);
+}
+catch (NegativeException ex)
+{
+    Console.WriteLine("Error: " + ex.Message);
+}
+catch(Exception ex)
+{
+    Console.WriteLine("Error: " + ex.Message);
+}
+
+static void ControlPositiveNumber(int number)
+{
+    if (number < 0)
+    {
+        throw new NegativeException("Not Allowed");
+    }
+}
+
+class NegativeException : Exception
+{
+    public NegativeException(string message) : base(message) { }
+}
